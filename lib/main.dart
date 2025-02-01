@@ -4,9 +4,10 @@ import 'dependency_injection.dart';
 import 'features/game/presentation/game_screen.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  setupDependencies();
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Garante a inicialização do Flutter
+  await Hive.initFlutter(); // Inicializa o Hive
+  await setupDependencies(); // Configura as dependências
 
   runApp(const MyApp());
 }

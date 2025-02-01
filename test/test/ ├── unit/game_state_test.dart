@@ -2,6 +2,7 @@
 import 'package:evading_button_game/data/models/settings_model.dart';
 import 'package:evading_button_game/data/repositories/settings_repository.dart';
 import 'package:evading_button_game/features/game/bloc/game_state.dart';
+import 'package:evading_button_game/features/game/domain/game_logic.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 class MockSettingsRepository extends Mock implements SettingsRepository {
@@ -24,8 +25,7 @@ class MockSettingsRepository extends Mock implements SettingsRepository {
   }
 }
 
-class Mock {
-}
+class Mock {}
 
 void main() {
   group('GameState Tests', () {
@@ -34,7 +34,8 @@ void main() {
 
     setUp(() {
       mockRepository = MockSettingsRepository();
-      gameState = GameState(mockRepository, GameLogic(), buttonPositions: [], score: null, difficulty: null, screenSize: null);
+      gameState = GameState(mockRepository, GameLogic(),
+          buttonPositions: [], score: null, difficulty: null, screenSize: null);
     });
 
     test('Initial values are correct', () {

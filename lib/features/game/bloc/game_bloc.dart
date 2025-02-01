@@ -4,9 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:evading_button_game/data/models/settings_model.dart';
 import 'package:evading_button_game/data/repositories/settings_repository.dart';
 import 'package:evading_button_game/features/game/domain/game_logic.dart';
-import 'game_state.dart';
 import 'game_event.dart';
-
+import 'game_state.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
   final SettingsRepository _settingsRepository;
@@ -40,7 +39,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     ));
   }
 
-  void _onUpdateButtonPosition(UpdateButtonPosition event, Emitter<GameState> emit) {
+  void _onUpdateButtonPosition(
+      UpdateButtonPosition event, Emitter<GameState> emit) {
     final newPositions = List<Offset>.from(state.buttonPositions);
     newPositions[event.buttonIndex] = Offset(
       _random.nextDouble() * state.screenSize.width,
@@ -57,10 +57,11 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   void _onAddScore(AddScore event, Emitter<GameState> emit) {
-  final newScore = state.score + _gameLogic.calculateScore(
-    baseScore: 100,
-    difficulty: state.difficulty,
-  );
-  emit(state.copyWith(score: newScore));
-}
+    final newScore = state.score +
+        _gameLogic.calculateScore(
+          baseScore: 100,
+          difficulty: state.difficulty,
+        );
+    emit(state.copyWith(score: newScore));
+  }
 }

@@ -6,13 +6,14 @@ class SettingsRepository {
 
   Future<void> init() async {
     if (!Hive.isAdapterRegistered(0)) {
-      Hive.registerAdapter(SettingsModelAdapter());
+      Hive.registerAdapter(SettingsModelAdapter()); // Registra o adaptador
     }
-    _settingsBox = await Hive.openBox<SettingsModel>('settings');
+    _settingsBox = await Hive.openBox<SettingsModel>('settings'); // Abre a box
   }
 
   SettingsModel getSettings() {
-    return _settingsBox.get('current', defaultValue: SettingsModel(difficulty: 1))!;
+    return _settingsBox.get('current',
+        defaultValue: SettingsModel(difficulty: 1))!;
   }
 
   Future<void> saveSettings(SettingsModel settings) async {

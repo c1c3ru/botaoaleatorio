@@ -1,10 +1,10 @@
+import 'package:evading_button_game/data/repositories/settings_repository.dart';
+import 'package:evading_button_game/features/game/bloc/game_state.dart';
+import 'package:evading_button_game/features/game/domain/game_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../data/repositories/settings_repository.dart';
 import '../bloc/game_bloc.dart';
 import '../bloc/game_event.dart';
-import '../bloc/game_state.dart';
-import '../domain/game_logic.dart';
 import 'widgets/moving_button.dart';
 
 class GameScreen extends StatelessWidget {
@@ -15,6 +15,9 @@ class GameScreen extends StatelessWidget {
     return Scaffold(
       body: LayoutBuilder(
         builder: (context, constraints) {
+          if (constraints.maxWidth <= 0 || constraints.maxHeight <= 0) {
+            return const Center(child: CircularProgressIndicator());
+          }
           return BlocProvider(
             create: (context) => GameBloc(
               context.read<SettingsRepository>(),
@@ -42,7 +45,8 @@ class GameScreen extends StatelessWidget {
     return state.buttonPositions.asMap().entries.map((entry) {
       return MovingButton(
         position: entry.value,
-        onMove: () => context.read<GameBloc>().add(UpdateButtonPosition(entry.key)),
+        onMove: () =>
+            context.read<GameBloc>().add(UpdateButtonPosition(entry.key)),
       );
     }).toList();
   }
@@ -69,7 +73,8 @@ class GameScreen extends StatelessWidget {
           Text('Score: ${state.score}'),
           _DifficultySlider(
             currentDifficulty: state.difficulty.toDouble(),
-            onChanged: (value) => context.read<GameBloc>().add(UpdateDifficulty(value.toInt())),
+            onChanged: (value) =>
+                context.read<GameBloc>().add(UpdateDifficulty(value.toInt())),
           ),
           ElevatedButton(
             onPressed: () => context.read<GameBloc>().add(AddScore()),
