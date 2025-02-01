@@ -26,6 +26,8 @@ android {
     namespace "com.example.botaoaleatorio"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
+    multiDexEnabled true
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -65,3 +67,6 @@ flutter {
 }
 
 dependencies {}
+android {
+    compileSdkVersion 34
+}

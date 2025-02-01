@@ -1,17 +1,20 @@
 // lib/features/game/domain/game_logic.dart
-class GameLogic {
-  // ... (métodos existentes)
+import 'dart:math';
+import 'package:flutter/material.dart';
 
-  List<Offset> generateInitialPositions(int count, Size screenSize) {
-    return List.generate(count, (_) => PositionGenerator.generateRandomPosition(
-      screenSize,
-      AppConstants.buttonSize,
+class GameLogic {
+  List<Offset> generateInitialPositions({
+    required int count,
+    required Size screenSize,
+  }) {
+    final random = Random();
+    return List.generate(count, (_) => Offset(
+      random.nextDouble() * screenSize.width,
+      random.nextDouble() * screenSize.height,
     ));
   }
 
-  List<Offset> updatePositions(List<Offset> currentPositions, int difficulty, Size screenSize) {
-    return currentPositions.map((pos) =>
-      PositionGenerator.generateDynamicPosition(pos, difficulty, screenSize)
-    ).toList();
+  int calculateScore({required int baseScore, required int difficulty}) {
+    return baseScore * difficulty;
   }
 }

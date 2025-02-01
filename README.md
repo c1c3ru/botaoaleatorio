@@ -6,36 +6,36 @@ A new Flutter project.
 
 ## Organização do projeto:
 ```
-lib/
-├── core/
-│   ├── constants/
-│   │   ├── app_constants.dart
-│   │   └── assets_constants.dart
-│   ├── services/
-│   │   ├── audio_service.dart
-│   │   └── vibration_service.dart
-│   └── utils/
-│       └── position_generator.dart
-├── data/
-│   ├── models/
-│   │   └── game_settings.dart
-│   └── repositories/
-│       └── settings_repository.dart
-├── features/
-│   └── game/
-│       ├── presentation/
-│       │   ├── widgets/
-│       │   │   ├── celebration_animation.dart
-│       │   │   ├── difficulty_selector.dart
-│       │   │   ├── moving_button.dart
-│       │   │   ├── score_display.dart
-│       │   │   └── static_button.dart
-│       │   ├── game_screen.dart
-│       │   └── game_state.dart
-│       └── domain/
-│           └── game_logic.dart
-├── app.dart
-└── main.dart
+    lib/
+    ├── core/
+    │   ├── constants/
+    │   │   ├── app_constants.dart
+    │   │   └── assets_constants.dart
+    │   ├── services/
+    │   │   ├── audio_service.dart
+    │   │   └── vibration_service.dart
+    │   └── utils/
+    │       └── position_generator.dart
+    ├── data/
+    │   ├── models/
+    │   │   └── game_settings.dart
+    │   └── repositories/
+    │       └── settings_repository.dart
+    ├── features/
+    │   └── game/
+    │       ├── presentation/
+    │       │   ├── widgets/
+    │       │   │   ├── celebration_animation.dart
+    │       │   │   ├── difficulty_selector.dart
+    │       │   │   ├── moving_button.dart
+    │       │   │   ├── score_display.dart
+    │       │   │   └── static_button.dart
+    │       │   ├── game_screen.dart
+    │       │   └── game_state.dart
+    │       └── domain/
+    │           └── game_logic.dart
+    ├── app.dart
+    └── main.dart
 ```
 
 ```
