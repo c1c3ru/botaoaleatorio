@@ -24,10 +24,18 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.botaoaleatorio"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion flutter.compileSdkVersion  // ou defina um valor fixo, ex: 34
     ndkVersion flutter.ndkVersion
-    multiDexEnabled true
 
+    defaultConfig {
+        applicationId "com.example.botaoaleatorio"
+        minSdkVersion flutter.minSdkVersion    // ou defina um valor fixo, ex: 21
+        targetSdkVersion flutter.targetSdkVersion // ou defina um valor fixo, ex: 33
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+
+        multiDexEnabled true
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -42,21 +50,9 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
-    defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.botaoaleatorio"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
-    }
-
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // TODO: Configure seu signingConfig para release se necessário
             signingConfig signingConfigs.debug
         }
     }
@@ -66,7 +62,10 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation 'androidx.multidex:multidex:2.0.1'
+    // Outras dependências...
+}
 android {
-    compileSdkVersion 34
+  compileSdkVersion 34
 }
